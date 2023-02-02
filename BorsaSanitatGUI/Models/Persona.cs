@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BorsaSanitat
+namespace BorsaSanitatGUI.Models
 {
     public class Persona
     {
@@ -14,6 +14,5 @@ namespace BorsaSanitat
         public string Situacio { get; set; }
         public string Categoria { get; set; }
         public string Departament { get; set; }
-
     }
 }

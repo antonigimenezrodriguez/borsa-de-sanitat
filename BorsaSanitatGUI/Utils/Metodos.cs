@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
 
-namespace BorsaSanitat
+namespace BorsaSanitatGUI.Utils
 {
-    public static class Constantes
-    {
-        public const string URL_SITUACIO = "https://www2.san.gva.es/bolsa/intervalosSituacionCandidatos.jsp";
-        public const string URL_PUNTUACIO = "https://www2.san.gva.es/bolsa/lstCandidatosListaOperativa.jsp";
-    }
-
-    public static class Utils
+    public static class Metodos
     {
         public static List<List<string>> HtmlTable2List(string html)
         {
@@ -39,6 +32,4 @@ namespace BorsaSanitat
             return await response.Content.ReadAsStringAsync();
         }
     }
-
-
 }
