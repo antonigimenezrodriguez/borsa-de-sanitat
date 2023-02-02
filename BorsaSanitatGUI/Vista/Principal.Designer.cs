@@ -30,6 +30,7 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.DGV_Listado = new System.Windows.Forms.DataGridView();
+            this.CB_Departamento = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Listado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,18 +53,28 @@
             this.DGV_Listado.Location = new System.Drawing.Point(12, 41);
             this.DGV_Listado.Name = "DGV_Listado";
             this.DGV_Listado.RowTemplate.Height = 25;
-            this.DGV_Listado.Size = new System.Drawing.Size(776, 397);
+            this.DGV_Listado.Size = new System.Drawing.Size(600, 397);
             this.DGV_Listado.TabIndex = 1;
+            // 
+            // CB_Departamento
+            // 
+            this.CB_Departamento.FormattingEnabled = true;
+            this.CB_Departamento.Location = new System.Drawing.Point(618, 41);
+            this.CB_Departamento.Name = "CB_Departamento";
+            this.CB_Departamento.Size = new System.Drawing.Size(121, 23);
+            this.CB_Departamento.TabIndex = 2;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(751, 450);
+            this.Controls.Add(this.CB_Departamento);
             this.Controls.Add(this.DGV_Listado);
             this.Controls.Add(this.button1);
             this.Name = "Principal";
             this.Text = "Principal";
+            this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Listado)).EndInit();
             this.ResumeLayout(false);
 
@@ -73,5 +84,6 @@
 
         private Button button1;
         private DataGridView DGV_Listado;
+        private ComboBox CB_Departamento;
     }
 }
