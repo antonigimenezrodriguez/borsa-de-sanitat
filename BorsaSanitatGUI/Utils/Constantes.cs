@@ -11,9 +11,10 @@ namespace BorsaSanitatGUI.Utils
         public const string URL_SITUACIO = "https://www2.san.gva.es/bolsa/lstSituacionCandidatos.jsp";
         public const string URL_PUNTUACIO = "https://www2.san.gva.es/bolsa/lstCandidatosListaOperativa.jsp";
 
-        public static Dictionary<string, string> departamentoCod
+        public static Dictionary<string, string> departamentoCod = new Dictionary<string, string>()
         {
-            }
+
+        };
 
     }
 }
