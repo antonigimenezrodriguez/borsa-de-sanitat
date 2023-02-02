@@ -1,10 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using BorsaSanitat;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+
 Console.WriteLine("Hello, World!");
 
-string url = "https://www2.san.gva.es/bolsa/lstCandidatosListaOperativa.jsp";
-HttpClient client = new HttpClient();
-
-var values = new Dictionary<string, string>
+var valuesPuntuacio = new Dictionary<string, string>
 {
     {"codedicion", "19.0.7.0" },
     {"turnoCode","O" },
@@ -19,22 +20,44 @@ var values = new Dictionary<string, string>
     {"titulo", "Reedició de les llistes d`ocupació temporal de l`edició 19.0.7 (resolución recursos i correccions). Publicació i entrada en vigor 13/01/2023." }
 };
 
-var content = new FormUrlEncodedContent(values);
-
-var response = await client.PostAsync(url, content);
-
-var responseString = await response.Content.ReadAsStringAsync();
+var responseString = await Utils.realizarDescargaWeb(Constantes.URL_PUNTUACIO, valuesPuntuacio);
 
 var subString = responseString.Substring(responseString.IndexOf("<table"));
 
-HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-doc.LoadHtml(subString);
+var tablaPunts = Utils.HtmlTable2List(subString);
 
-List<List<string>> table = doc.DocumentNode.SelectSingleNode("//table")
-            .Descendants("tr")
-            .Skip(1)
-            .Where(tr => tr.Elements("td").Count() > 1)
-            .Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
-            .ToList();
+var valuesSituacio = new Dictionary<string, string>
+{
+    {"codedicion", "19.0" },
+    {"turnoCod","O" },
+    {"categoriaCod", "0001" },
+    {"departamentoCod", "ALY" },
+    {"turnoDesc", "Ordinari" },
+    {"categoriaDesc", "ENGINYER+D%27APLICACIONS+I+SISTEMES" },
+    {"departamentoDesc", "ALCOY" },
+    {"posicionInicial", "1" },
+    {"posicionFinal", "50" },
+    {"nw", "true" },
+    //{"titulo", "Consulta de la situació en les llistes d'ocupació temporal de cada un dels candidats inscrits, a les 00:00 hores del dia de publicació (01/02/2023)" }
+};
+
+
+responseString = await Utils.realizarDescargaWeb(Constantes.URL_SITUACIO, valuesSituacio);
+
+
+
+
+List<Persona> personas = new List<Persona>();
+foreach (var tableItem in tablaPunts)
+{
+    Persona persona = new Persona()
+    {
+        NumeroLlista = Int32.Parse(tableItem.ElementAt(0).Replace("&nbsp;","")),
+        Nom = tableItem.ElementAt(1),
+        puntuacio = Double.Parse(tableItem.ElementAt(2))
+    };
+    personas.Add(persona);
+}
 
 var asd = "";
+
