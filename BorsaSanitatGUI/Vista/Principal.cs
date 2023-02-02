@@ -30,7 +30,7 @@ namespace BorsaSanitatGUI.Vista
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var asd2 = CB_Departamento.SelectedItem.ToString();
+            DGV_Listado.DataSource = new List<Persona>();
             Cursor.Current = Cursors.WaitCursor;
             BT_Buscar.Enabled = false;
             var valuesPuntuacio = new Dictionary<string, string>
@@ -64,40 +64,48 @@ namespace BorsaSanitatGUI.Vista
 
 
                 responseString = await Metodos.realizarDescargaWeb(Constantes.URL_SITUACIO, valuesSituacio);
-
-                subString = responseString.Substring(responseString.IndexOf("<table"));
-
-                var tablaSituacio = Metodos.HtmlTable2List(subString);
-
-
-                personas = new List<Persona>();
-                int index = 0;
-                foreach (var tableItem in tablaPunts)
+                if (responseString.Contains("<table"))
                 {
-                    Persona persona = new Persona()
+                    subString = responseString.Substring(responseString.IndexOf("<table"));
+
+                    var tablaSituacio = Metodos.HtmlTable2List(subString);
+
+
+                    personas = new List<Persona>();
+                    int index = 0;
+                    foreach (var tableItem in tablaPunts)
                     {
-                        NumeroLlista = Int32.Parse(tableItem.ElementAt(0).Replace("&nbsp;", "")),
-                        Nom = tableItem.ElementAt(1),
-                        Puntuacio = Double.Parse(tableItem.ElementAt(2).Replace('.', ',')),
-                        Categoria = tablaSituacio.ElementAt(index).ElementAt(3),
-                        Departament = tablaSituacio.ElementAt(index).ElementAt(4),
-                        Situacio = tablaSituacio.ElementAt(index).ElementAt(2),
-                    };
-                    personas.Add(persona);
-                    index++;
-                }
+                        Persona persona = new Persona()
+                        {
+                            NumeroLlista = Int32.Parse(tableItem.ElementAt(0).Replace("&nbsp;", "")),
+                            Nom = tableItem.ElementAt(1),
+                            Puntuacio = Double.Parse(tableItem.ElementAt(2).Replace('.', ',')),
+                            Categoria = tablaSituacio.ElementAt(index).ElementAt(3),
+                            Departament = tablaSituacio.ElementAt(index).ElementAt(4),
+                            Situacio = tablaSituacio.ElementAt(index).ElementAt(2),
+                        };
+                        personas.Add(persona);
+                        index++;
+                    }
 
-                DGV_Listado.DataSource = personas;
-                DGV_Listado.AutoResizeColumns();
-                DGV_Listado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Listado.Columns)
+                    DGV_Listado.DataSource = personas;
+                    DGV_Listado.AutoResizeColumns();
+                    DGV_Listado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    foreach (DataGridViewColumn column in DGV_Listado.Columns)
+                    {
+                        column.SortMode = DataGridViewColumnSortMode.Automatic;
+                    }
+                }
+                else
                 {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
+                    MessageBox.Show("No es troba la informació sol·licitada. Canvia els paràmetres de búsqueda o prova passats uns minuts");
+                    DGV_Listado.DataSource = new List<Persona>();
                 }
             }
             else
             {
-                MessageBox.Show("No es troba la informació sol·licitada");
+                MessageBox.Show("No es troba la informació sol·licitada. Canvia els paràmetres de búsqueda o prova passats uns minuts");
+                DGV_Listado.DataSource = new List<Persona>();
             }
             Cursor.Current = Cursors.Default;
             BT_Buscar.Enabled = true;

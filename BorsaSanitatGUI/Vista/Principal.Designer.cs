@@ -48,8 +48,8 @@
             // 
             // BT_Buscar
             // 
-            this.BT_Buscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Buscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Buscar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BT_Buscar.Location = new System.Drawing.Point(719, 179);
             this.BT_Buscar.Name = "BT_Buscar";
             this.BT_Buscar.Size = new System.Drawing.Size(70, 23);
@@ -124,6 +124,11 @@
             this.NUD_Inicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NUD_Inicio.Location = new System.Drawing.Point(719, 121);
+            this.NUD_Inicio.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.NUD_Inicio.Name = "NUD_Inicio";
             this.NUD_Inicio.Size = new System.Drawing.Size(120, 23);
             this.NUD_Inicio.TabIndex = 6;
@@ -196,8 +201,7 @@
             // 
             // BT_ExportarExcel
             // 
-            this.BT_ExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_ExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BT_ExportarExcel.Location = new System.Drawing.Point(795, 179);
             this.BT_ExportarExcel.Name = "BT_ExportarExcel";
             this.BT_ExportarExcel.Size = new System.Drawing.Size(93, 23);
