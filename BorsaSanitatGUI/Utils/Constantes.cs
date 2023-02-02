@@ -46,5 +46,16 @@ namespace BorsaSanitatGUI.Utils
 
         };
 
+        public static List<DepartamentoCod> categoriaCod = new List<DepartamentoCod>()
+        {
+            new DepartamentoCod() { Clave = "Telefonista", Valor = "0095"}, 
+            new DepartamentoCod() { Clave = "Infermer/a especialista obstétrico-ginecològica", Valor = "0246"}, 
+            new DepartamentoCod() { Clave = "Graduats en infermeria", Valor = "8001"}, 
+            new DepartamentoCod() { Clave = "Infermer/a", Valor = "0285"}, 
+            new DepartamentoCod() { Clave = "Tècnic d'informàtica", Valor = "0009"}, 
+            new DepartamentoCod() { Clave = "Analista programador i de sistemes", Valor = "0002"}, 
+            new DepartamentoCod() { Clave = "Enginyer d'aplicacions i sistemes", Valor = "0001"},
+        };
+
     }
 }

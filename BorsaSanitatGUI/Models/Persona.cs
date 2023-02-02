@@ -10,7 +10,7 @@ namespace BorsaSanitatGUI.Models
     {
         public int NumeroLlista { get; set; }
         public string Nom { get; set; }
-        public double puntuacio { get; set; }
+        public double Puntuacio { get; set; }
         public string Situacio { get; set; }
         public string Categoria { get; set; }
         public string Departament { get; set; }
