@@ -8,12 +8,12 @@ namespace BorsaSanitatGUI.Models.Parámetros
 {
     public class CategoriaCod
     {
-        public string Clave { get; set; }
-        public string Valor { get; set; }
+        public string NombreCategoria { get; set; }
+        public string CodigoCategoria { get; set; }
 
         public override string ToString()
         {
-            return Valor;
+            return CodigoCategoria;
         }
     }
 }

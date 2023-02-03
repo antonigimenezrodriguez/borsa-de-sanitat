@@ -41,6 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.TB_Filtrar = new System.Windows.Forms.TextBox();
             this.BT_ExportarExcel = new System.Windows.Forms.Button();
+            this.LB_Cargando = new System.Windows.Forms.Label();
+            this.BT_Datos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Listado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Inicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Final)).BeginInit();
@@ -210,11 +212,36 @@
             this.BT_ExportarExcel.UseVisualStyleBackColor = true;
             this.BT_ExportarExcel.Click += new System.EventHandler(this.BT_ExportarExcel_Click);
             // 
+            // LB_Cargando
+            // 
+            this.LB_Cargando.AutoSize = true;
+            this.LB_Cargando.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LB_Cargando.Location = new System.Drawing.Point(61, 9);
+            this.LB_Cargando.Name = "LB_Cargando";
+            this.LB_Cargando.Size = new System.Drawing.Size(270, 21);
+            this.LB_Cargando.TabIndex = 13;
+            this.LB_Cargando.Text = "Cargando datos... Por favor espere";
+            this.LB_Cargando.Visible = false;
+            // 
+            // BT_Datos
+            // 
+            this.BT_Datos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Datos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BT_Datos.Location = new System.Drawing.Point(715, 386);
+            this.BT_Datos.Name = "BT_Datos";
+            this.BT_Datos.Size = new System.Drawing.Size(75, 56);
+            this.BT_Datos.TabIndex = 14;
+            this.BT_Datos.Text = "Datos Personales";
+            this.BT_Datos.UseVisualStyleBackColor = true;
+            this.BT_Datos.Click += new System.EventHandler(this.BT_Datos_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 504);
+            this.Controls.Add(this.BT_Datos);
+            this.Controls.Add(this.LB_Cargando);
             this.Controls.Add(this.BT_ExportarExcel);
             this.Controls.Add(this.TB_Filtrar);
             this.Controls.Add(this.label4);
@@ -254,5 +281,7 @@
         private Label label4;
         private TextBox TB_Filtrar;
         private Button BT_ExportarExcel;
+        private Label LB_Cargando;
+        private Button BT_Datos;
     }
 }

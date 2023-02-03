@@ -30,9 +30,12 @@ namespace BorsaSanitatGUI.Vista
 
         private async void button1_Click(object sender, EventArgs e)
         {
+            LB_Cargando.Visible = true;
             DGV_Listado.DataSource = new List<Persona>();
             Cursor.Current = Cursors.WaitCursor;
             BT_Buscar.Enabled = false;
+            BT_ExportarExcel.Enabled = false;
+            TB_Filtrar.Enabled = false;
             var valuesPuntuacio = new Dictionary<string, string>
                 {
                     {"codedicion", "19.0.7.0" },
@@ -45,6 +48,7 @@ namespace BorsaSanitatGUI.Vista
                 };
 
             var responseString = await Metodos.realizarDescargaWeb(Constantes.URL_PUNTUACIO, valuesPuntuacio);
+            Cursor.Current = Cursors.WaitCursor;
             if (responseString.Contains("<table"))
             {
                 var subString = responseString.Substring(responseString.IndexOf("<table"));
@@ -64,6 +68,7 @@ namespace BorsaSanitatGUI.Vista
 
 
                 responseString = await Metodos.realizarDescargaWeb(Constantes.URL_SITUACIO, valuesSituacio);
+                Cursor.Current = Cursors.WaitCursor;
                 if (responseString.Contains("<table"))
                 {
                     subString = responseString.Substring(responseString.IndexOf("<table"));
@@ -109,12 +114,15 @@ namespace BorsaSanitatGUI.Vista
             }
             Cursor.Current = Cursors.Default;
             BT_Buscar.Enabled = true;
+            BT_ExportarExcel.Enabled = true;
+            TB_Filtrar.Enabled = true;
+            LB_Cargando.Visible = false;
         }
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            CB_Departamento.DisplayMember = "Clave";
-            CB_Departamento.ValueMember = "Valor";
+            CB_Departamento.DisplayMember = "NombreDepartamento";
+            CB_Departamento.ValueMember = "CodigoDepartamento";
             foreach (var element in Constantes.departamentoCod)
             {
                 CB_Departamento.Items.Add(element);
@@ -122,9 +130,9 @@ namespace BorsaSanitatGUI.Vista
             CB_Departamento.SelectedIndex = 0;
 
 
-            CB_Categoria.DisplayMember = "Clave";
-            CB_Categoria.ValueMember = "Valor";
-            foreach (var element in Constantes.categoriaCod.OrderBy(o => o.Clave))
+            CB_Categoria.DisplayMember = "NombreCategoria";
+            CB_Categoria.ValueMember = "CodigoCategoria";
+            foreach (var element in Constantes.categoriaCod.OrderBy(o => o.NombreCategoria))
             {
                 CB_Categoria.Items.Add(element);
             }
@@ -228,6 +236,12 @@ namespace BorsaSanitatGUI.Vista
                     }
                 }
             }
+        }
+
+        private void BT_Datos_Click(object sender, EventArgs e)
+        {
+            DatosPersonales formDatosPersonales = new DatosPersonales();
+            formDatosPersonales.ShowDialog();
         }
     }
 }
