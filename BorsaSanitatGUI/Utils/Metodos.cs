@@ -22,6 +22,14 @@ namespace BorsaSanitatGUI.Utils
             return table;
         }
 
+        public static List<List<string>> BuscarCategorias(string html)
+        {
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+            //List<List<string>> table = doc.DocumentNode.SelectSingleNode("//table");
+            return null;
+        }
+
         public static async Task<string> realizarDescargaWeb(string url, Dictionary<string, string> values)
         {
             HttpClient client = new HttpClient();

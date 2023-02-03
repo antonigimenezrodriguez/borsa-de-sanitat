@@ -30,8 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TB_DNI = new System.Windows.Forms.TextBox();
+            this.TB_Apellido = new System.Windows.Forms.TextBox();
+            this.BT_Buscar = new System.Windows.Forms.Button();
+            this.LB_Cargando = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -52,27 +54,49 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Apellido:";
             // 
-            // textBox1
+            // TB_DNI
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 2;
+            this.TB_DNI.Location = new System.Drawing.Point(67, 25);
+            this.TB_DNI.Name = "TB_DNI";
+            this.TB_DNI.Size = new System.Drawing.Size(100, 23);
+            this.TB_DNI.TabIndex = 2;
             // 
-            // textBox2
+            // TB_Apellido
             // 
-            this.textBox2.Location = new System.Drawing.Point(266, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 3;
+            this.TB_Apellido.Location = new System.Drawing.Point(266, 25);
+            this.TB_Apellido.Name = "TB_Apellido";
+            this.TB_Apellido.Size = new System.Drawing.Size(100, 23);
+            this.TB_Apellido.TabIndex = 3;
+            // 
+            // BT_Buscar
+            // 
+            this.BT_Buscar.Location = new System.Drawing.Point(384, 25);
+            this.BT_Buscar.Name = "BT_Buscar";
+            this.BT_Buscar.Size = new System.Drawing.Size(75, 23);
+            this.BT_Buscar.TabIndex = 4;
+            this.BT_Buscar.Text = "Buscar";
+            this.BT_Buscar.UseVisualStyleBackColor = true;
+            this.BT_Buscar.Click += new System.EventHandler(this.BT_Buscar_Click);
+            // 
+            // LB_Cargando
+            // 
+            this.LB_Cargando.AutoSize = true;
+            this.LB_Cargando.Location = new System.Drawing.Point(67, 69);
+            this.LB_Cargando.Name = "LB_Cargando";
+            this.LB_Cargando.Size = new System.Drawing.Size(197, 15);
+            this.LB_Cargando.TabIndex = 5;
+            this.LB_Cargando.Text = "Cargando datos... Por favor espere...";
+            this.LB_Cargando.Visible = false;
             // 
             // DatosPersonales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.LB_Cargando);
+            this.Controls.Add(this.BT_Buscar);
+            this.Controls.Add(this.TB_Apellido);
+            this.Controls.Add(this.TB_DNI);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DatosPersonales";
@@ -86,7 +110,9 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox TB_DNI;
+        private TextBox TB_Apellido;
+        private Button BT_Buscar;
+        private Label LB_Cargando;
     }
 }
