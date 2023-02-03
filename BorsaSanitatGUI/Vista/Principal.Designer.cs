@@ -225,6 +225,8 @@
             // 
             // BT_Datos
             // 
+            this.BT_Datos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BT_Datos.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BT_Datos.Location = new System.Drawing.Point(715, 386);
             this.BT_Datos.Name = "BT_Datos";
             this.BT_Datos.Size = new System.Drawing.Size(75, 56);

@@ -34,6 +34,8 @@
             this.TB_Apellido = new System.Windows.Forms.TextBox();
             this.BT_Buscar = new System.Windows.Forms.Button();
             this.LB_Cargando = new System.Windows.Forms.Label();
+            this.DGV_Departament1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -88,11 +90,21 @@
             this.LB_Cargando.Text = "Cargando datos... Por favor espere...";
             this.LB_Cargando.Visible = false;
             // 
+            // DGV_Departament1
+            // 
+            this.DGV_Departament1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Departament1.Location = new System.Drawing.Point(12, 168);
+            this.DGV_Departament1.Name = "DGV_Departament1";
+            this.DGV_Departament1.RowTemplate.Height = 25;
+            this.DGV_Departament1.Size = new System.Drawing.Size(1241, 292);
+            this.DGV_Departament1.TabIndex = 6;
+            // 
             // DatosPersonales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1265, 579);
+            this.Controls.Add(this.DGV_Departament1);
             this.Controls.Add(this.LB_Cargando);
             this.Controls.Add(this.BT_Buscar);
             this.Controls.Add(this.TB_Apellido);
@@ -101,6 +113,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DatosPersonales";
             this.Text = "DatosPersonales";
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +127,6 @@
         private TextBox TB_Apellido;
         private Button BT_Buscar;
         private Label LB_Cargando;
+        private DataGridView DGV_Departament1;
     }
 }

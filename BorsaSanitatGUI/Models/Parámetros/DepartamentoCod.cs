@@ -9,12 +9,12 @@ namespace BorsaSanitatGUI.Models.Parámetros
 {
     public class DepartamentoCod
     {
-        public string Clave { get; set; }
-        public string Valor { get; set; }
+        public string NombreDepartamento { get; set; }
+        public string CodigoDepartamento { get; set; }
 
         public override string ToString()
         {
-            return Valor;
+            return CodigoDepartamento;
         }
     }
 }

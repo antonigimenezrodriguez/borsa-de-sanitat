@@ -121,8 +121,8 @@ namespace BorsaSanitatGUI.Vista
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            CB_Departamento.DisplayMember = "Clave";
-            CB_Departamento.ValueMember = "Valor";
+            CB_Departamento.DisplayMember = "NombreDepartamento";
+            CB_Departamento.ValueMember = "CodigoDepartamento";
             foreach (var element in Constantes.departamentoCod)
             {
                 CB_Departamento.Items.Add(element);
@@ -130,9 +130,9 @@ namespace BorsaSanitatGUI.Vista
             CB_Departamento.SelectedIndex = 0;
 
 
-            CB_Categoria.DisplayMember = "Clave";
-            CB_Categoria.ValueMember = "Valor";
-            foreach (var element in Constantes.categoriaCod.OrderBy(o => o.Clave))
+            CB_Categoria.DisplayMember = "NombreCategoria";
+            CB_Categoria.ValueMember = "CodigoCategoria";
+            foreach (var element in Constantes.categoriaCod.OrderBy(o => o.NombreCategoria))
             {
                 CB_Categoria.Items.Add(element);
             }
