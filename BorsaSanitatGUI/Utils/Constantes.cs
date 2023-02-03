@@ -9,8 +9,10 @@ namespace BorsaSanitatGUI.Utils
 {
     public static class Constantes
     {
-        public const string URL_SITUACIO = "https://www2.san.gva.es/bolsa/lstSituacionCandidatos.jsp";
-        public const string URL_PUNTUACIO = "https://www2.san.gva.es/bolsa/lstCandidatosListaOperativa.jsp";
+        private const string HOST = "https://www2.san.gva.es";
+        public const string URL_SITUACIO = $"{HOST}/bolsa/lstSituacionCandidatos.jsp";
+        public const string URL_PUNTUACIO = $"{HOST}/bolsa/lstCandidatosListaOperativa.jsp";
+        public const string URL_DADES_PERSONALS = $"{HOST}/bolsa/lstDniApellido.jsp";
 
         public static List<DepartamentoCod> departamentoCod = new List<DepartamentoCod>()
         {
