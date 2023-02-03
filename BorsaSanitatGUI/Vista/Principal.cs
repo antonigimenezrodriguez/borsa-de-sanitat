@@ -240,7 +240,8 @@ namespace BorsaSanitatGUI.Vista
 
         private void BT_Datos_Click(object sender, EventArgs e)
         {
-
+            DatosPersonales formDatosPersonales = new DatosPersonales();
+            formDatosPersonales.ShowDialog();
         }
     }
 }
