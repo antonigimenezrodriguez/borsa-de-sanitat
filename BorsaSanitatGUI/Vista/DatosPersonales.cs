@@ -138,8 +138,56 @@ namespace BorsaSanitatGUI.Vista
                             break;
                     }
                 }
-                DGV_Departament1.DataSource = new List<CategoriaPuntos>();
-                DGV_Departament1.DataSource = categoriaPuntos;
+                List<GridViewPuntuacion> listaDepartamento1 = new List<GridViewPuntuacion>();
+                if (categoriaPuntos.ElementAt(0) != null)
+                {
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1. Servicios prestados", Valor = categoriaPuntos.ElementAt(0).ServeisPrestats });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.1. Servicios en IISS públicas - Misma categoría", Valor = categoriaPuntos.ElementAt(0).ServicisEnIISSPubliquesMateixaCategoria });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.2. Servicios en IISS públicas - Distinta categoría", Valor = categoriaPuntos.ElementAt(0).ServicisEnIISSPubliquesDistintaCategoria });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.2. Servicios Milit., penit., socio-sanitario", Valor = categoriaPuntos.ElementAt(0).ServicisMilitarsPenitenciarisSocioSanitari });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.3. Servicios Concertados, Mutuas", Valor = categoriaPuntos.ElementAt(0).ServicisConcertatsMutues });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "2. Nota de oposición", Valor = categoriaPuntos.ElementAt(0).NotaOposicio });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "3. Valenciano", Valor = categoriaPuntos.ElementAt(0).Valencia });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "4. Formación especializada categoría y especialidad", Valor = categoriaPuntos.ElementAt(0).FormacioEspecialitzadaCategoriaEspecialitat });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "5. Formación contínua y continuada", Valor = categoriaPuntos.ElementAt(0).FormacioContinuaIContinuada });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "6. Diversidad funcional", Valor = categoriaPuntos.ElementAt(0).DiversitatFuncional });
+                    listaDepartamento1.Add(new GridViewPuntuacion() { TipoPuntuacion = "Total", Valor = categoriaPuntos.ElementAt(0).Total });
+                }
+                DGV_Departament1.DataSource = listaDepartamento1;
+
+                List<GridViewPuntuacion> listaDepartamento2 = new List<GridViewPuntuacion>();
+                if (categoriaPuntos.ElementAt(1) != null)
+                {
+                    listaDepartamento2.Add(new GridViewPuntuacion() {TipoPuntuacion = "1. Servicios prestados", Valor = categoriaPuntos.ElementAt(1).ServeisPrestats });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.1. Servicios en IISS públicas - Misma categoría", Valor = categoriaPuntos.ElementAt(1).ServicisEnIISSPubliquesMateixaCategoria });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.2. Servicios en IISS públicas - Distinta categoría", Valor = categoriaPuntos.ElementAt(1).ServicisEnIISSPubliquesDistintaCategoria });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.2. Servicios Milit., penit., socio-sanitario", Valor = categoriaPuntos.ElementAt(1).ServicisMilitarsPenitenciarisSocioSanitari });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.3. Servicios Concertados, Mutuas", Valor = categoriaPuntos.ElementAt(1).ServicisConcertatsMutues });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "2. Nota de oposición", Valor = categoriaPuntos.ElementAt(1).NotaOposicio });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "3. Valenciano", Valor = categoriaPuntos.ElementAt(1).Valencia });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "4. Formación especializada categoría y especialidad", Valor = categoriaPuntos.ElementAt(1).FormacioEspecialitzadaCategoriaEspecialitat });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "5. Formación contínua y continuada", Valor = categoriaPuntos.ElementAt(1).FormacioContinuaIContinuada });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "6. Diversidad funcional", Valor = categoriaPuntos.ElementAt(1).DiversitatFuncional });
+                    listaDepartamento2.Add(new GridViewPuntuacion() { TipoPuntuacion = "Total", Valor = categoriaPuntos.ElementAt(1).Total });
+                }
+                DGV_Departament2.DataSource = listaDepartamento2;
+
+                List<GridViewPuntuacion> listaDepartamento3 = new List<GridViewPuntuacion>();
+                if (categoriaPuntos.ElementAt(2) != null)
+                {
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1. Servicios prestados", Valor = categoriaPuntos.ElementAt(2).ServeisPrestats });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.1. Servicios en IISS públicas - Misma categoría", Valor = categoriaPuntos.ElementAt(2).ServicisEnIISSPubliquesMateixaCategoria });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.2. Servicios en IISS públicas - Distinta categoría", Valor = categoriaPuntos.ElementAt(2).ServicisEnIISSPubliquesDistintaCategoria });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.2. Servicios Milit., penit., socio-sanitario", Valor = categoriaPuntos.ElementAt(2).ServicisMilitarsPenitenciarisSocioSanitari });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.3. Servicios Concertados, Mutuas", Valor = categoriaPuntos.ElementAt(2).ServicisConcertatsMutues });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "2. Nota de oposición", Valor = categoriaPuntos.ElementAt(2).NotaOposicio });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "3. Valenciano", Valor = categoriaPuntos.ElementAt(2).Valencia });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "4. Formación especializada categoría y especialidad", Valor = categoriaPuntos.ElementAt(2).FormacioEspecialitzadaCategoriaEspecialitat });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "5. Formación contínua y continuada", Valor = categoriaPuntos.ElementAt(2).FormacioContinuaIContinuada });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "6. Diversidad funcional", Valor = categoriaPuntos.ElementAt(2).DiversitatFuncional });
+                    listaDepartamento3.Add(new GridViewPuntuacion() { TipoPuntuacion = "Total", Valor = categoriaPuntos.ElementAt(2).Total });
+                }
+                DGV_Departament3.DataSource = listaDepartamento3;
                 LB_Cargando.Visible = false;
             }
             else

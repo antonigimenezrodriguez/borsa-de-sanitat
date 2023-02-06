@@ -35,7 +35,11 @@
             this.BT_Buscar = new System.Windows.Forms.Button();
             this.LB_Cargando = new System.Windows.Forms.Label();
             this.DGV_Departament1 = new System.Windows.Forms.DataGridView();
+            this.DGV_Departament2 = new System.Windows.Forms.DataGridView();
+            this.DGV_Departament3 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,17 +97,37 @@
             // DGV_Departament1
             // 
             this.DGV_Departament1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Departament1.Location = new System.Drawing.Point(12, 168);
+            this.DGV_Departament1.Location = new System.Drawing.Point(12, 87);
             this.DGV_Departament1.Name = "DGV_Departament1";
             this.DGV_Departament1.RowTemplate.Height = 25;
-            this.DGV_Departament1.Size = new System.Drawing.Size(1241, 292);
+            this.DGV_Departament1.Size = new System.Drawing.Size(370, 350);
             this.DGV_Departament1.TabIndex = 6;
+            // 
+            // DGV_Departament2
+            // 
+            this.DGV_Departament2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Departament2.Location = new System.Drawing.Point(449, 87);
+            this.DGV_Departament2.Name = "DGV_Departament2";
+            this.DGV_Departament2.RowTemplate.Height = 25;
+            this.DGV_Departament2.Size = new System.Drawing.Size(367, 350);
+            this.DGV_Departament2.TabIndex = 7;
+            // 
+            // DGV_Departament3
+            // 
+            this.DGV_Departament3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Departament3.Location = new System.Drawing.Point(887, 87);
+            this.DGV_Departament3.Name = "DGV_Departament3";
+            this.DGV_Departament3.RowTemplate.Height = 25;
+            this.DGV_Departament3.Size = new System.Drawing.Size(349, 350);
+            this.DGV_Departament3.TabIndex = 8;
             // 
             // DatosPersonales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 579);
+            this.Controls.Add(this.DGV_Departament3);
+            this.Controls.Add(this.DGV_Departament2);
             this.Controls.Add(this.DGV_Departament1);
             this.Controls.Add(this.LB_Cargando);
             this.Controls.Add(this.BT_Buscar);
@@ -114,6 +138,8 @@
             this.Name = "DatosPersonales";
             this.Text = "DatosPersonales";
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +154,7 @@
         private Button BT_Buscar;
         private Label LB_Cargando;
         private DataGridView DGV_Departament1;
+        private DataGridView DGV_Departament2;
+        private DataGridView DGV_Departament3;
     }
 }
