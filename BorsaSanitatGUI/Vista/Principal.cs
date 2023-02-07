@@ -85,9 +85,6 @@ namespace BorsaSanitatGUI.Vista
                             NumeroLlista = Int32.Parse(tableItem.ElementAt(0).Replace("&nbsp;", "")),
                             Nom = tableItem.ElementAt(1),
                             Puntuacio = Double.Parse(tableItem.ElementAt(2).Replace('.', ',')),
-                           /* Categoria = tablaSituacio.ElementAt(index).ElementAt(3),
-                            Departament = tablaSituacio.ElementAt(index).ElementAt(4),
-                            Situacio = tablaSituacio.ElementAt(index).ElementAt(2),*/
                         };
                         personas.Add(persona);
                         index++;
