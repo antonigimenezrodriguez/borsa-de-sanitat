@@ -34,8 +34,21 @@
             this.TB_Apellido = new System.Windows.Forms.TextBox();
             this.BT_Buscar = new System.Windows.Forms.Button();
             this.LB_Cargando = new System.Windows.Forms.Label();
-            this.DGV_Departament1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament1)).BeginInit();
+            this.DGV_Categoria1 = new System.Windows.Forms.DataGridView();
+            this.DGV_Categoria2 = new System.Windows.Forms.DataGridView();
+            this.DGV_Categoria3 = new System.Windows.Forms.DataGridView();
+            this.LB_Categoria1 = new System.Windows.Forms.Label();
+            this.LB_Categoria2 = new System.Windows.Forms.Label();
+            this.LB_Categoria3 = new System.Windows.Forms.Label();
+            this.DGV_Categoria1Departaments = new System.Windows.Forms.DataGridView();
+            this.DGV_Categoria2Departaments = new System.Windows.Forms.DataGridView();
+            this.DGV_Categoria3Departaments = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria1Departaments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria2Departaments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria3Departaments)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,28 +96,120 @@
             // LB_Cargando
             // 
             this.LB_Cargando.AutoSize = true;
-            this.LB_Cargando.Location = new System.Drawing.Point(67, 69);
+            this.LB_Cargando.Location = new System.Drawing.Point(545, 29);
             this.LB_Cargando.Name = "LB_Cargando";
             this.LB_Cargando.Size = new System.Drawing.Size(197, 15);
             this.LB_Cargando.TabIndex = 5;
             this.LB_Cargando.Text = "Cargando datos... Por favor espere...";
             this.LB_Cargando.Visible = false;
             // 
-            // DGV_Departament1
+            // DGV_Categoria1
             // 
-            this.DGV_Departament1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Departament1.Location = new System.Drawing.Point(12, 168);
-            this.DGV_Departament1.Name = "DGV_Departament1";
-            this.DGV_Departament1.RowTemplate.Height = 25;
-            this.DGV_Departament1.Size = new System.Drawing.Size(1241, 292);
-            this.DGV_Departament1.TabIndex = 6;
+            this.DGV_Categoria1.AllowUserToAddRows = false;
+            this.DGV_Categoria1.AllowUserToDeleteRows = false;
+            this.DGV_Categoria1.AllowUserToResizeRows = false;
+            this.DGV_Categoria1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Categoria1.Location = new System.Drawing.Point(12, 95);
+            this.DGV_Categoria1.MultiSelect = false;
+            this.DGV_Categoria1.Name = "DGV_Categoria1";
+            this.DGV_Categoria1.ReadOnly = true;
+            this.DGV_Categoria1.RowTemplate.Height = 25;
+            this.DGV_Categoria1.Size = new System.Drawing.Size(403, 332);
+            this.DGV_Categoria1.TabIndex = 6;
+            // 
+            // DGV_Categoria2
+            // 
+            this.DGV_Categoria2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Categoria2.Location = new System.Drawing.Point(421, 95);
+            this.DGV_Categoria2.MultiSelect = false;
+            this.DGV_Categoria2.Name = "DGV_Categoria2";
+            this.DGV_Categoria2.ReadOnly = true;
+            this.DGV_Categoria2.RowTemplate.Height = 25;
+            this.DGV_Categoria2.Size = new System.Drawing.Size(403, 332);
+            this.DGV_Categoria2.TabIndex = 7;
+            // 
+            // DGV_Categoria3
+            // 
+            this.DGV_Categoria3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Categoria3.Location = new System.Drawing.Point(830, 95);
+            this.DGV_Categoria3.MultiSelect = false;
+            this.DGV_Categoria3.Name = "DGV_Categoria3";
+            this.DGV_Categoria3.ReadOnly = true;
+            this.DGV_Categoria3.RowTemplate.Height = 25;
+            this.DGV_Categoria3.Size = new System.Drawing.Size(403, 332);
+            this.DGV_Categoria3.TabIndex = 8;
+            // 
+            // LB_Categoria1
+            // 
+            this.LB_Categoria1.AutoSize = true;
+            this.LB_Categoria1.Location = new System.Drawing.Point(12, 70);
+            this.LB_Categoria1.Name = "LB_Categoria1";
+            this.LB_Categoria1.Size = new System.Drawing.Size(38, 15);
+            this.LB_Categoria1.TabIndex = 9;
+            this.LB_Categoria1.Text = "label3";
+            this.LB_Categoria1.Visible = false;
+            // 
+            // LB_Categoria2
+            // 
+            this.LB_Categoria2.AutoSize = true;
+            this.LB_Categoria2.Location = new System.Drawing.Point(421, 70);
+            this.LB_Categoria2.Name = "LB_Categoria2";
+            this.LB_Categoria2.Size = new System.Drawing.Size(38, 15);
+            this.LB_Categoria2.TabIndex = 10;
+            this.LB_Categoria2.Text = "label3";
+            this.LB_Categoria2.Visible = false;
+            // 
+            // LB_Categoria3
+            // 
+            this.LB_Categoria3.AutoSize = true;
+            this.LB_Categoria3.Location = new System.Drawing.Point(830, 70);
+            this.LB_Categoria3.Name = "LB_Categoria3";
+            this.LB_Categoria3.Size = new System.Drawing.Size(38, 15);
+            this.LB_Categoria3.TabIndex = 11;
+            this.LB_Categoria3.Text = "label3";
+            this.LB_Categoria3.Visible = false;
+            // 
+            // DGV_Categoria1Departaments
+            // 
+            this.DGV_Categoria1Departaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Categoria1Departaments.Location = new System.Drawing.Point(12, 460);
+            this.DGV_Categoria1Departaments.Name = "DGV_Categoria1Departaments";
+            this.DGV_Categoria1Departaments.RowTemplate.Height = 25;
+            this.DGV_Categoria1Departaments.Size = new System.Drawing.Size(403, 210);
+            this.DGV_Categoria1Departaments.TabIndex = 12;
+            // 
+            // DGV_Categoria2Departaments
+            // 
+            this.DGV_Categoria2Departaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Categoria2Departaments.Location = new System.Drawing.Point(421, 460);
+            this.DGV_Categoria2Departaments.Name = "DGV_Categoria2Departaments";
+            this.DGV_Categoria2Departaments.RowTemplate.Height = 25;
+            this.DGV_Categoria2Departaments.Size = new System.Drawing.Size(403, 210);
+            this.DGV_Categoria2Departaments.TabIndex = 13;
+            // 
+            // DGV_Categoria3Departaments
+            // 
+            this.DGV_Categoria3Departaments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Categoria3Departaments.Location = new System.Drawing.Point(830, 460);
+            this.DGV_Categoria3Departaments.Name = "DGV_Categoria3Departaments";
+            this.DGV_Categoria3Departaments.RowTemplate.Height = 25;
+            this.DGV_Categoria3Departaments.Size = new System.Drawing.Size(403, 210);
+            this.DGV_Categoria3Departaments.TabIndex = 14;
             // 
             // DatosPersonales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 579);
-            this.Controls.Add(this.DGV_Departament1);
+            this.ClientSize = new System.Drawing.Size(1257, 696);
+            this.Controls.Add(this.DGV_Categoria3Departaments);
+            this.Controls.Add(this.DGV_Categoria2Departaments);
+            this.Controls.Add(this.DGV_Categoria1Departaments);
+            this.Controls.Add(this.LB_Categoria3);
+            this.Controls.Add(this.LB_Categoria2);
+            this.Controls.Add(this.LB_Categoria1);
+            this.Controls.Add(this.DGV_Categoria3);
+            this.Controls.Add(this.DGV_Categoria2);
+            this.Controls.Add(this.DGV_Categoria1);
             this.Controls.Add(this.LB_Cargando);
             this.Controls.Add(this.BT_Buscar);
             this.Controls.Add(this.TB_Apellido);
@@ -113,7 +218,12 @@
             this.Controls.Add(this.label1);
             this.Name = "DatosPersonales";
             this.Text = "DatosPersonales";
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Departament1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria1Departaments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria2Departaments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Categoria3Departaments)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,6 +237,14 @@
         private TextBox TB_Apellido;
         private Button BT_Buscar;
         private Label LB_Cargando;
-        private DataGridView DGV_Departament1;
+        private DataGridView DGV_Categoria1;
+        private DataGridView DGV_Categoria2;
+        private DataGridView DGV_Categoria3;
+        private Label LB_Categoria1;
+        private Label LB_Categoria2;
+        private Label LB_Categoria3;
+        private DataGridView DGV_Categoria1Departaments;
+        private DataGridView DGV_Categoria2Departaments;
+        private DataGridView DGV_Categoria3Departaments;
     }
 }
