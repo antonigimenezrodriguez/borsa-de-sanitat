@@ -85,12 +85,23 @@ namespace BorsaSanitatGUI.Vista
                             NumeroLlista = Int32.Parse(tableItem.ElementAt(0).Replace("&nbsp;", "")),
                             Nom = tableItem.ElementAt(1),
                             Puntuacio = Double.Parse(tableItem.ElementAt(2).Replace('.', ',')),
-                            Categoria = tablaSituacio.ElementAt(index).ElementAt(3),
+                           /* Categoria = tablaSituacio.ElementAt(index).ElementAt(3),
                             Departament = tablaSituacio.ElementAt(index).ElementAt(4),
-                            Situacio = tablaSituacio.ElementAt(index).ElementAt(2),
+                            Situacio = tablaSituacio.ElementAt(index).ElementAt(2),*/
                         };
                         personas.Add(persona);
                         index++;
+                    }
+
+                    foreach (var tableItem in tablaSituacio)
+                    {
+                        var persona = personas.Where(w => w.Nom == tableItem.ElementAt(1)).FirstOrDefault();
+                        if (persona != null)
+                        {
+                            persona.Categoria = tableItem.ElementAt(3);
+                            persona.Departament = tableItem.ElementAt(4);
+                            persona.Situacio = tableItem.ElementAt(2);
+                        }
                     }
 
                     DGV_Listado.DataSource = personas;
