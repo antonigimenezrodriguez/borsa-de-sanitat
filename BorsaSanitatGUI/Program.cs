@@ -1,3 +1,4 @@
+using BorsaSanitatGUI.EntityFramework;
 using BorsaSanitatGUI.Vista;
 
 namespace BorsaSanitatGUI
@@ -10,6 +11,10 @@ namespace BorsaSanitatGUI
         [STAThread]
         static void Main()
         {
+            using (var context = new BorsaSanitatContext())
+            {
+                context.Database.EnsureCreated();
+            }
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

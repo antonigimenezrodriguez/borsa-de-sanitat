@@ -1,4 +1,6 @@
-﻿using BorsaSanitatGUI.Models;
+﻿using BorsaSanitatGUI.EntityFramework;
+using BorsaSanitatGUI.Models;
+using BorsaSanitatGUI.Models.Parámetros;
 using BorsaSanitatGUI.Utils;
 using ClosedXML.Excel;
 using System;
@@ -23,8 +25,10 @@ namespace BorsaSanitatGUI.Vista
         bool sortSituacionAsc = true;
         bool sortCategoriaAsc = true;
         bool sortDepartamentAsc = true;
+        public BorsaSanitatContext context { get; set; }
         public Principal()
         {
+            context = new BorsaSanitatContext();
             InitializeComponent();
         }
 
@@ -131,7 +135,8 @@ namespace BorsaSanitatGUI.Vista
         {
             CB_Departamento.DisplayMember = "NombreDepartamento";
             CB_Departamento.ValueMember = "CodigoDepartamento";
-            foreach (var element in Constantes.departamentoCod)
+            List<Departamento> departamentos = context.Departamentos.OrderBy(o => o.NombreDepartamento).ToList();
+            foreach (var element in departamentos)
             {
                 CB_Departamento.Items.Add(element);
             }
@@ -140,7 +145,8 @@ namespace BorsaSanitatGUI.Vista
 
             CB_Categoria.DisplayMember = "NombreCategoria";
             CB_Categoria.ValueMember = "CodigoCategoria";
-            foreach (var element in Constantes.categoriaCod.OrderBy(o => o.NombreCategoria))
+            List<Categoria> categorias = context.Categorias.OrderBy(o => o.NombreCategoria).ToList();
+            foreach (var element in categorias)
             {
                 CB_Categoria.Items.Add(element);
             }
