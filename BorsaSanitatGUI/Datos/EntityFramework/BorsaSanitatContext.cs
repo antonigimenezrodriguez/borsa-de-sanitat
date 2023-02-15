@@ -14,7 +14,7 @@ namespace BorsaSanitatGUI.Datos.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=BorsaSanitatDB;User ID=sa;Password=234b10e1;Trust Server Certificate=true");
+            optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=BorsaSanitatDB;Trusted_Connection=Yes;MultipleActiveResultSets=True;Trust Server Certificate=true");
         }
 
         public DbSet<Departamento> Departamentos { get; set; }
@@ -63,8 +63,9 @@ namespace BorsaSanitatGUI.Datos.EntityFramework
                 new Departamento() { NombreDepartamento = "La Plana", CodigoDepartamento = "PLA" },
                 new Departamento() { NombreDepartamento = "Requena", CodigoDepartamento = "REQ" },
                 new Departamento() { NombreDepartamento = "Ribera", CodigoDepartamento = "RIB" },
-                new Departamento() { NombreDepartamento = "SA", CodigoDepartamento = "SA" },
+                new Departamento() { NombreDepartamento = "SES Alacant", CodigoDepartamento = "SA" },
                 new Departamento() { NombreDepartamento = "Sagunto", CodigoDepartamento = "SAG" },
+                new Departamento() { NombreDepartamento = "San Joan", CodigoDepartamento = "SJO" },
                 new Departamento() { NombreDepartamento = "SES Castelló", CodigoDepartamento = "SC" },
                 new Departamento() { NombreDepartamento = "Serveis Centrals", CodigoDepartamento = "SCC" },
                 new Departamento() { NombreDepartamento = "S.P. Alacant", CodigoDepartamento = "SPA" },

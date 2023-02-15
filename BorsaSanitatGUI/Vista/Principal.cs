@@ -197,11 +197,11 @@ namespace BorsaSanitatGUI.Vista
         private void TB_Filtrar_TextChanged(object sender, EventArgs e)
         {
             DGV_Listado.DataSource = personas.Where(w => w.NumeroLlista.ToString().ToUpper().Contains(TB_Filtrar.Text.ToUpper())
-                        || w.Categoria.ToUpper().Contains(TB_Filtrar.Text.ToUpper())
-                        || w.Departament.ToUpper().Contains(TB_Filtrar.Text.ToUpper())
-                        || w.Nom.ToUpper().Contains(TB_Filtrar.Text.ToUpper())
-                        || w.Puntuacio.ToString().ToUpper().Contains(TB_Filtrar.Text.ToUpper())
-                        || w.Situacio.ToUpper().Contains(TB_Filtrar.Text.ToUpper())).ToList();
+                        || w.Categoria != null && w.Categoria.ToUpper().Contains(TB_Filtrar.Text.ToUpper())
+                        || w.Departament != null && w.Departament.ToUpper().Contains(TB_Filtrar.Text.ToUpper())
+                        || w.Nom != null && w.Nom.ToUpper().Contains(TB_Filtrar.Text.ToUpper())
+                        || w.Puntuacio != null && w.Puntuacio.ToString().ToUpper().Contains(TB_Filtrar.Text.ToUpper())
+                        || w.Situacio != null && w.Situacio.ToUpper().Contains(TB_Filtrar.Text.ToUpper())).ToList();
         }
 
         private void BT_ExportarExcel_Click(object sender, EventArgs e)
@@ -245,7 +245,7 @@ namespace BorsaSanitatGUI.Vista
         private void BT_Datos_Click(object sender, EventArgs e)
         {
             DatosPersonales formDatosPersonales = new DatosPersonales();
-            formDatosPersonales.ShowDialog();
+            formDatosPersonales.Show();
         }
     }
 }
