@@ -1,18 +1,9 @@
-﻿using BorsaSanitatGUI.EntityFramework;
-using BorsaSanitatGUI.Models;
-using BorsaSanitatGUI.Models.Parámetros;
+﻿using BorsaSanitatGUI.Datos.Models;
+using BorsaSanitatGUI.Datos.Models.Parametros;
+using BorsaSanitatGUI.Datos.Repository;
 using BorsaSanitatGUI.Utils;
 using ClosedXML.Excel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace BorsaSanitatGUI.Vista
 {
@@ -25,10 +16,10 @@ namespace BorsaSanitatGUI.Vista
         bool sortSituacionAsc = true;
         bool sortCategoriaAsc = true;
         bool sortDepartamentAsc = true;
-        public BorsaSanitatContext context { get; set; }
+        public IRepositoryGVA RepositoryGVA { get; set; }
         public Principal()
         {
-            context = new BorsaSanitatContext();
+            this.RepositoryGVA = new RepositoryGVA();
             InitializeComponent();
         }
 
@@ -42,7 +33,7 @@ namespace BorsaSanitatGUI.Vista
             TB_Filtrar.Enabled = false;
             var valuesPuntuacio = new Dictionary<string, string>
                 {
-                    {"codedicion", "19.0.7.0" },
+                    {"codedicion", RepositoryGVA.ObtenerCodigoEdicionPorTipo(Constantes.CLAVE_EDICION_LISTADO_PUNTUACION) },
                     {"turnoCode","O" },
                     {"departamentoCod", CB_Departamento.SelectedItem.ToString() },
                     {"categoriaCod", CB_Categoria.SelectedItem.ToString() },
@@ -61,7 +52,6 @@ namespace BorsaSanitatGUI.Vista
 
                 var valuesSituacio = new Dictionary<string, string>
 {
-                    {"codedicion", "19.0" },
                     {"turnoCod","O" },
                     {"categoriaCod", CB_Categoria.SelectedItem.ToString() },
                     {"departamentoCod", CB_Departamento.SelectedItem.ToString() },
@@ -86,9 +76,9 @@ namespace BorsaSanitatGUI.Vista
                     {
                         Persona persona = new Persona()
                         {
-                            NumeroLlista = Int32.Parse(tableItem.ElementAt(0).Replace("&nbsp;", "")),
+                            NumeroLlista = int.Parse(tableItem.ElementAt(0).Replace("&nbsp;", "")),
                             Nom = tableItem.ElementAt(1),
-                            Puntuacio = Double.Parse(tableItem.ElementAt(2).Replace('.', ',')),
+                            Puntuacio = double.Parse(tableItem.ElementAt(2).Replace('.', ',')),
                         };
                         personas.Add(persona);
                         index++;
@@ -135,7 +125,7 @@ namespace BorsaSanitatGUI.Vista
         {
             CB_Departamento.DisplayMember = "NombreDepartamento";
             CB_Departamento.ValueMember = "CodigoDepartamento";
-            List<Departamento> departamentos = context.Departamentos.OrderBy(o => o.NombreDepartamento).ToList();
+            List<Departamento> departamentos = this.RepositoryGVA.ObtenerDepartamentos().OrderBy(o => o.NombreDepartamento).ToList();
             foreach (var element in departamentos)
             {
                 CB_Departamento.Items.Add(element);
@@ -145,7 +135,7 @@ namespace BorsaSanitatGUI.Vista
 
             CB_Categoria.DisplayMember = "NombreCategoria";
             CB_Categoria.ValueMember = "CodigoCategoria";
-            List<Categoria> categorias = context.Categorias.OrderBy(o => o.NombreCategoria).ToList();
+            List<Categoria> categorias = this.RepositoryGVA.ObtenerCategorias().OrderBy(o => o.NombreCategoria).ToList();
             foreach (var element in categorias)
             {
                 CB_Categoria.Items.Add(element);

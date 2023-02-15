@@ -1,4 +1,4 @@
-using BorsaSanitatGUI.EntityFramework;
+using BorsaSanitatGUI.Datos.EntityFramework;
 using BorsaSanitatGUI.Vista;
 
 namespace BorsaSanitatGUI

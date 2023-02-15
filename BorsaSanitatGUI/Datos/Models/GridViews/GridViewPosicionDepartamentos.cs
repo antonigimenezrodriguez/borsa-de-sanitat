@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BorsaSanitatGUI.Models.GridViews
+namespace BorsaSanitatGUI.Datos.Models.GridViews
 {
     public class GridViewPosicionDepartamentos
     {

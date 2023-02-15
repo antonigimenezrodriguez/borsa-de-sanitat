@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace BorsaSanitatGUI.Models.Parámetros
+namespace BorsaSanitatGUI.Datos.Models.Parametros
 {
     public class Departamento
     {

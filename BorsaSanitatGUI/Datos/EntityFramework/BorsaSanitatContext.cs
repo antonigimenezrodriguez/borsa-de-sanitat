@@ -1,5 +1,6 @@
-﻿using BorsaSanitatGUI.Models;
-using BorsaSanitatGUI.Models.Parámetros;
+﻿using BorsaSanitatGUI.Datos.Models;
+using BorsaSanitatGUI.Datos.Models.Parametros;
+using BorsaSanitatGUI.Utils;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BorsaSanitatGUI.EntityFramework
+namespace BorsaSanitatGUI.Datos.EntityFramework
 {
     public class BorsaSanitatContext : DbContext
     {
@@ -18,12 +19,32 @@ namespace BorsaSanitatGUI.EntityFramework
 
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<CodigoEdicion> CodigosEdiciones { get; set; }
+        public DbSet<Puntuacion> TiposPuntuaciones { get; set; }
 
-    
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Puntuacion>().HasData(
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_PRESTADOS, Descripcion = "1. Servicios prestados" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_IIS_PUBLICAS_MISMA_CATEGORIA, Descripcion = "1.1.1. Servicios en IISS públicas - Misma categoría" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_IIS_DISTINTA_CATEGORIA, Descripcion = "1.1.2. Servicios en IISS públicas - Distinta categoría" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_MILITARES_PENITENCIARIOS_SOCIO_SANITARIO, Descripcion = "1.2. Servicios Milit., penit., socio-sanitario" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_CONCERTADOS_MUTUAS, Descripcion = "1.3. Servicios Concertados, Mutuas" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_NOTA_OPOSICION, Descripcion = "2. Nota de oposición" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_VALENCIANO, Descripcion = "3. Valenciano" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_FORMACION_ESPECIALIZADA, Descripcion = "4. Formación especializada categoría y especialidad" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_FORMACION_CONTINUA_Y_CONTINUADA, Descripcion = "5. Formación contínua y continuada" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_DIVERSIDAD_FUNCIONAL, Descripcion = "6. Diversidad funcional" },
+                new Puntuacion() { Tipo = Constantes.CLAVE_SERVICIOS_TOTAL, Descripcion = "Total" }
+                );
+
+            modelBuilder.Entity<CodigoEdicion>().HasData(
+                new CodigoEdicion() { Tipo = Constantes.CLAVE_EDICION_LISTADO_PUNTUACION, Edicion = "20.0.2.0" },
+                new CodigoEdicion() { Tipo = Constantes.CLAVE_EDICION_DATOS_PERSONALES, Edicion = "20.0.2.0" }
+                );
+
             modelBuilder.Entity<Departamento>().HasData(
                 new Departamento() { NombreDepartamento = "Alicante", CodigoDepartamento = "ALI" },
                 new Departamento() { NombreDepartamento = "Alcoy", CodigoDepartamento = "ALY" },
