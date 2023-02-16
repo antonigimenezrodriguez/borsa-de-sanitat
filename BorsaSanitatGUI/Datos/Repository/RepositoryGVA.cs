@@ -1,4 +1,5 @@
 ﻿using BorsaSanitatGUI.Datos.EntityFramework;
+using BorsaSanitatGUI.Datos.Models;
 using BorsaSanitatGUI.Datos.Models.Parametros;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace BorsaSanitatGUI.Datos.Repository
         public string ObtenerCodigoEdicionPorTipo(string tipo)
         {
             return Context.CodigosEdiciones.Where(w => w.Tipo == tipo).FirstOrDefault()?.Edicion;
+        }
+
+        public IDictionary<string, string> ObtenerEtiquetasPuntuaciones()
+        {
+            return Context.TiposPuntuaciones.ToDictionary(x => x.Tipo, x => x.Descripcion);
         }
     }
 }

@@ -9,9 +9,11 @@ namespace BorsaSanitatGUI.Vista
     public partial class DatosPersonales : Form
     {
         public IRepositoryGVA RepositoryGVA { get; set; }
+        public IDictionary<string, string> Puntuaciones { get; set; }
         public DatosPersonales()
         {
-            this.RepositoryGVA = new RepositoryGVA();
+            RepositoryGVA = new RepositoryGVA();
+            Puntuaciones = RepositoryGVA.ObtenerEtiquetasPuntuaciones();
             InitializeComponent();
         }
 
@@ -142,136 +144,64 @@ namespace BorsaSanitatGUI.Vista
                             break;
                     }
                 }
-                List<GridViewPuntuacion> listaCategoria1 = new List<GridViewPuntuacion>();
-                List<GridViewPosicionDepartamentos> listaCategoria1Departamentos = new List<GridViewPosicionDepartamentos>();
+
                 if (categoriaPuntos.ElementAt(0) != null)
-                {
-                    LB_Categoria1.Text = categoriaPuntos.ElementAt(0).Categoria;
-                    LB_Categoria1.Visible = true;
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1. Servicios prestados", Valor = categoriaPuntos.ElementAt(0).ServiciosPrestados });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.1. Servicios en IISS públicas - Misma categoría", Valor = categoriaPuntos.ElementAt(0).ServiciosEnIISSPublicasMismaCategoria });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.2. Servicios en IISS públicas - Distinta categoría", Valor = categoriaPuntos.ElementAt(0).ServiciosEnIISSPublicasDistintaCategoria });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.2. Servicios Milit., penit., socio-sanitario", Valor = categoriaPuntos.ElementAt(0).ServiciosMilitaresPenitenciariosSocioSanitario });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.3. Servicios Concertados, Mutuas", Valor = categoriaPuntos.ElementAt(0).ServiciosConcertadosMutuas });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "2. Nota de oposición", Valor = categoriaPuntos.ElementAt(0).NotaOposicion });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "3. Valenciano", Valor = categoriaPuntos.ElementAt(0).Valencia });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "4. Formación especializada categoría y especialidad", Valor = categoriaPuntos.ElementAt(0).FormacionEspecializadaCategoriaEspecialidad });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "5. Formación contínua y continuada", Valor = categoriaPuntos.ElementAt(0).FormacionContinuaYContinuada });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "6. Diversidad funcional", Valor = categoriaPuntos.ElementAt(0).DiversidadFuncional });
-                    listaCategoria1.Add(new GridViewPuntuacion() { TipoPuntuacion = "Total", Valor = categoriaPuntos.ElementAt(0).Total });
-
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento1Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento1Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento1Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento1Lugar / (double)categoriaPuntos.ElementAt(0).Departamento1Total) * 100, 2) });
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento2Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento2Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento2Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento2Lugar / (double)categoriaPuntos.ElementAt(0).Departamento2Total) * 100, 2) });
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento3Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento3Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento3Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento3Lugar / (double)categoriaPuntos.ElementAt(0).Departamento3Total) * 100, 2) });
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento4Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento4Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento4Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento4Lugar / (double)categoriaPuntos.ElementAt(0).Departamento4Total) * 100, 2) });
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento5Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento5Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento5Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento5Lugar / (double)categoriaPuntos.ElementAt(0).Departamento5Total) * 100, 2) });
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento6Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento6Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento6Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento6Lugar / (double)categoriaPuntos.ElementAt(0).Departamento6Total) * 100, 2) });
-                    listaCategoria1Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(0).Departamento7Nombre, Posicion = categoriaPuntos.ElementAt(0).Departamento7Lugar, TotalInscritos = categoriaPuntos.ElementAt(0).Departamento7Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(0).Departamento7Lugar / (double)categoriaPuntos.ElementAt(0).Departamento7Total) * 100, 2) });
-                }
-                DGV_Categoria1.DataSource = listaCategoria1;
-                DGV_Categoria1.AutoResizeColumns();
-                DGV_Categoria1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Categoria1.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                }
-
-                DGV_Categoria1Departaments.DataSource = listaCategoria1Departamentos;
-                DGV_Categoria1Departaments.AutoResizeColumns();
-                DGV_Categoria1Departaments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Categoria1Departaments.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                }
-
-                List<GridViewPuntuacion> listaCategoria2 = new List<GridViewPuntuacion>();
-                List<GridViewPosicionDepartamentos> listaCategoria2Departamentos = new List<GridViewPosicionDepartamentos>();
+                    RellenarDataGridView(DGV_Categoria1, DGV_Categoria1Departaments, categoriaPuntos.ElementAt(0));
                 if (categoriaPuntos.ElementAt(1) != null)
-                {
-                    LB_Categoria2.Text = categoriaPuntos.ElementAt(1).Categoria;
-                    LB_Categoria2.Visible = true;
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1. Servicios prestados", Valor = categoriaPuntos.ElementAt(1).ServiciosPrestados });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.1. Servicios en IISS públicas - Misma categoría", Valor = categoriaPuntos.ElementAt(1).ServiciosEnIISSPublicasMismaCategoria });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.2. Servicios en IISS públicas - Distinta categoría", Valor = categoriaPuntos.ElementAt(1).ServiciosEnIISSPublicasDistintaCategoria });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.2. Servicios Milit., penit., socio-sanitario", Valor = categoriaPuntos.ElementAt(1).ServiciosMilitaresPenitenciariosSocioSanitario });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.3. Servicios Concertados, Mutuas", Valor = categoriaPuntos.ElementAt(1).ServiciosConcertadosMutuas });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "2. Nota de oposición", Valor = categoriaPuntos.ElementAt(1).NotaOposicion });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "3. Valenciano", Valor = categoriaPuntos.ElementAt(1).Valencia });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "4. Formación especializada categoría y especialidad", Valor = categoriaPuntos.ElementAt(1).FormacionEspecializadaCategoriaEspecialidad });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "5. Formación contínua y continuada", Valor = categoriaPuntos.ElementAt(1).FormacionContinuaYContinuada });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "6. Diversidad funcional", Valor = categoriaPuntos.ElementAt(1).DiversidadFuncional });
-                    listaCategoria2.Add(new GridViewPuntuacion() { TipoPuntuacion = "Total", Valor = categoriaPuntos.ElementAt(1).Total });
-
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento1Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento1Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento1Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento1Lugar / (double)categoriaPuntos.ElementAt(1).Departamento1Total) * 100, 2) });
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento2Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento2Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento2Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento2Lugar / (double)categoriaPuntos.ElementAt(1).Departamento2Total) * 100, 2) });
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento3Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento3Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento3Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento3Lugar / (double)categoriaPuntos.ElementAt(1).Departamento3Total) * 100, 2) });
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento4Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento4Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento4Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento4Lugar / (double)categoriaPuntos.ElementAt(1).Departamento4Total) * 100, 2) });
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento5Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento5Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento5Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento5Lugar / (double)categoriaPuntos.ElementAt(1).Departamento5Total) * 100, 2) });
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento6Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento6Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento6Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento6Lugar / (double)categoriaPuntos.ElementAt(1).Departamento6Total) * 100, 2) });
-                    listaCategoria2Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(1).Departamento7Nombre, Posicion = categoriaPuntos.ElementAt(1).Departamento7Lugar, TotalInscritos = categoriaPuntos.ElementAt(1).Departamento7Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(1).Departamento7Lugar / (double)categoriaPuntos.ElementAt(1).Departamento7Total) * 100, 2) });
-                }
-                DGV_Categoria2.DataSource = listaCategoria2;
-                DGV_Categoria2.AutoResizeColumns();
-                DGV_Categoria2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Categoria2.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                }
-                DGV_Categoria2Departaments.DataSource = listaCategoria2Departamentos;
-                DGV_Categoria2Departaments.AutoResizeColumns();
-                DGV_Categoria2Departaments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Categoria2Departaments.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                }
-
-                List<GridViewPuntuacion> listaCategoria3 = new List<GridViewPuntuacion>();
-                List<GridViewPosicionDepartamentos> listaCategoria3Departamentos = new List<GridViewPosicionDepartamentos>();
-
+                    RellenarDataGridView(DGV_Categoria2, DGV_Categoria2Departaments, categoriaPuntos.ElementAt(1));
                 if (categoriaPuntos.ElementAt(2) != null)
-                {
-                    LB_Categoria3.Text = categoriaPuntos.ElementAt(2).Categoria;
-                    LB_Categoria3.Visible = true;
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1. Servicios prestados", Valor = categoriaPuntos.ElementAt(2).ServiciosPrestados });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.1. Servicios en IISS públicas - Misma categoría", Valor = categoriaPuntos.ElementAt(2).ServiciosEnIISSPublicasMismaCategoria });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.1.2. Servicios en IISS públicas - Distinta categoría", Valor = categoriaPuntos.ElementAt(2).ServiciosEnIISSPublicasDistintaCategoria });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.2. Servicios Milit., penit., socio-sanitario", Valor = categoriaPuntos.ElementAt(2).ServiciosMilitaresPenitenciariosSocioSanitario });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "1.3. Servicios Concertados, Mutuas", Valor = categoriaPuntos.ElementAt(2).ServiciosConcertadosMutuas });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "2. Nota de oposición", Valor = categoriaPuntos.ElementAt(2).NotaOposicion });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "3. Valenciano", Valor = categoriaPuntos.ElementAt(2).Valencia });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "4. Formación especializada categoría y especialidad", Valor = categoriaPuntos.ElementAt(2).FormacionEspecializadaCategoriaEspecialidad });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "5. Formación contínua y continuada", Valor = categoriaPuntos.ElementAt(2).FormacionContinuaYContinuada });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "6. Diversidad funcional", Valor = categoriaPuntos.ElementAt(2).DiversidadFuncional });
-                    listaCategoria3.Add(new GridViewPuntuacion() { TipoPuntuacion = "Total", Valor = categoriaPuntos.ElementAt(2).Total });
+                    RellenarDataGridView(DGV_Categoria3, DGV_Categoria3Departaments, categoriaPuntos.ElementAt(2));
 
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento1Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento1Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento1Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento1Lugar / (double)categoriaPuntos.ElementAt(2).Departamento1Total) * 100, 2) });
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento2Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento2Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento2Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento2Lugar / (double)categoriaPuntos.ElementAt(2).Departamento2Total) * 100, 2) });
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento3Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento3Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento3Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento3Lugar / (double)categoriaPuntos.ElementAt(2).Departamento3Total) * 100, 2) });
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento4Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento4Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento4Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento4Lugar / (double)categoriaPuntos.ElementAt(2).Departamento4Total) * 100, 2) });
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento5Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento5Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento5Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento5Lugar / (double)categoriaPuntos.ElementAt(2).Departamento5Total) * 100, 2) });
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento6Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento6Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento6Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento6Lugar / (double)categoriaPuntos.ElementAt(2).Departamento6Total) * 100, 2) });
-                    listaCategoria3Departamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.ElementAt(2).Departamento7Nombre, Posicion = categoriaPuntos.ElementAt(2).Departamento7Lugar, TotalInscritos = categoriaPuntos.ElementAt(2).Departamento7Total, Porcent = double.Round(((double)categoriaPuntos.ElementAt(2).Departamento7Lugar / (double)categoriaPuntos.ElementAt(2).Departamento7Total) * 100, 2) });
-
-                }
-                DGV_Categoria3.DataSource = listaCategoria3;
-                DGV_Categoria3.AutoResizeColumns();
-                DGV_Categoria3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Categoria3.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                }
-                DGV_Categoria3Departaments.DataSource = listaCategoria3Departamentos;
-                DGV_Categoria3Departaments.AutoResizeColumns();
-                DGV_Categoria3Departaments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                foreach (DataGridViewColumn column in DGV_Categoria3Departaments.Columns)
-                {
-                    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                }
                 LB_Cargando.Visible = false;
             }
             else
             {
                 MessageBox.Show("No es troba la informació sol·licitada. Canvia els paràmetres de búsqueda o prova passats uns minuts");
+            }
+        }
+
+        public void RellenarDataGridView(DataGridView dataGridViewCategoria, DataGridView dataGridViewDepartamentos, CategoriaPuntos categoriaPuntos)
+        {
+            List<GridViewPuntuacion> listaCategoria = new List<GridViewPuntuacion>();
+            List<GridViewPosicionDepartamentos> listaCategoriaDepartamentos = new List<GridViewPosicionDepartamentos>();
+            if (categoriaPuntos != null)
+            {
+                LB_Categoria1.Text = categoriaPuntos.Categoria;
+                LB_Categoria1.Visible = true;
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_PRESTADOS], Valor = categoriaPuntos.ServiciosPrestados });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_IIS_PUBLICAS_MISMA_CATEGORIA], Valor = categoriaPuntos.ServiciosEnIISSPublicasMismaCategoria });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_IIS_DISTINTA_CATEGORIA], Valor = categoriaPuntos.ServiciosEnIISSPublicasDistintaCategoria });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_MILITARES_PENITENCIARIOS_SOCIO_SANITARIO], Valor = categoriaPuntos.ServiciosMilitaresPenitenciariosSocioSanitario });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_CONCERTADOS_MUTUAS], Valor = categoriaPuntos.ServiciosConcertadosMutuas });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_NOTA_OPOSICION], Valor = categoriaPuntos.NotaOposicion });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_VALENCIANO], Valor = categoriaPuntos.Valencia });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_FORMACION_ESPECIALIZADA], Valor = categoriaPuntos.FormacionEspecializadaCategoriaEspecialidad });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_FORMACION_CONTINUA_Y_CONTINUADA], Valor = categoriaPuntos.FormacionContinuaYContinuada });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_DIVERSIDAD_FUNCIONAL], Valor = categoriaPuntos.DiversidadFuncional });
+                listaCategoria.Add(new GridViewPuntuacion() { TipoPuntuacion = Puntuaciones[Constantes.CLAVE_SERVICIOS_TOTAL], Valor = categoriaPuntos.Total });
+
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento1Nombre, Posicion = categoriaPuntos.Departamento1Lugar, TotalInscritos = categoriaPuntos.Departamento1Total, Porcent = double.Round(((double)categoriaPuntos.Departamento1Lugar / (double)categoriaPuntos.Departamento1Total) * 100, 2) });
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento2Nombre, Posicion = categoriaPuntos.Departamento2Lugar, TotalInscritos = categoriaPuntos.Departamento2Total, Porcent = double.Round(((double)categoriaPuntos.Departamento2Lugar / (double)categoriaPuntos.Departamento2Total) * 100, 2) });
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento3Nombre, Posicion = categoriaPuntos.Departamento3Lugar, TotalInscritos = categoriaPuntos.Departamento3Total, Porcent = double.Round(((double)categoriaPuntos.Departamento3Lugar / (double)categoriaPuntos.Departamento3Total) * 100, 2) });
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento4Nombre, Posicion = categoriaPuntos.Departamento4Lugar, TotalInscritos = categoriaPuntos.Departamento4Total, Porcent = double.Round(((double)categoriaPuntos.Departamento4Lugar / (double)categoriaPuntos.Departamento4Total) * 100, 2) });
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento5Nombre, Posicion = categoriaPuntos.Departamento5Lugar, TotalInscritos = categoriaPuntos.Departamento5Total, Porcent = double.Round(((double)categoriaPuntos.Departamento5Lugar / (double)categoriaPuntos.Departamento5Total) * 100, 2) });
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento6Nombre, Posicion = categoriaPuntos.Departamento6Lugar, TotalInscritos = categoriaPuntos.Departamento6Total, Porcent = double.Round(((double)categoriaPuntos.Departamento6Lugar / (double)categoriaPuntos.Departamento6Total) * 100, 2) });
+                listaCategoriaDepartamentos.Add(new GridViewPosicionDepartamentos() { Departamento = categoriaPuntos.Departamento7Nombre, Posicion = categoriaPuntos.Departamento7Lugar, TotalInscritos = categoriaPuntos.Departamento7Total, Porcent = double.Round(((double)categoriaPuntos.Departamento7Lugar / (double)categoriaPuntos.Departamento7Total) * 100, 2) });
+            }
+            dataGridViewCategoria.DataSource = listaCategoria;
+            dataGridViewCategoria.AutoResizeColumns();
+            dataGridViewCategoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            foreach (DataGridViewColumn column in dataGridViewCategoria.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
+
+            dataGridViewDepartamentos.DataSource = listaCategoriaDepartamentos;
+            dataGridViewDepartamentos.AutoResizeColumns();
+            dataGridViewDepartamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            foreach (DataGridViewColumn column in dataGridViewDepartamentos.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
         }
     }

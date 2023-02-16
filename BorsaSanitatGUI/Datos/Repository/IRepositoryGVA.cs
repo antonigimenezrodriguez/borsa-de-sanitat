@@ -1,4 +1,5 @@
-﻿using BorsaSanitatGUI.Datos.Models.Parametros;
+﻿using BorsaSanitatGUI.Datos.Models;
+using BorsaSanitatGUI.Datos.Models.Parametros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace BorsaSanitatGUI.Datos.Repository
         IList<Categoria> ObtenerCategorias();
         IList<Departamento> ObtenerDepartamentos();
         string ObtenerCodigoEdicionPorTipo(string tipo);
+        IDictionary<string, string> ObtenerEtiquetasPuntuaciones();
     }
 }
